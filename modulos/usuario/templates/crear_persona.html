@@ -1,0 +1,45 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content-fluid %}
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Registro persona</h1>
+    <p class="mb-4">Formulario para registrar una nueva persona al sistema.</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card custom-background-card shadow-sm">
+                <div class="card-body">
+        
+                    <div class="d-flex">
+                        <div style="width: 150px;margin:auto;">
+                            <img class="img-profile rounded-circle"  style="border: 2px solid white;" src="{% static 'img/undraw_profile.svg' %}">
+                        </div>
+                    </div>
+        
+                    <form method="POST" class="text-white mt-3">
+                        {% csrf_token %}
+
+                        {{ form.as_p }}
+
+                        <div class="my-2"></div>
+                        <button type="submit" class="btn btn-success btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="far fa-save"></i>
+                            </span>
+                            <span class="text">Guardar</span>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+{% endblock %}
+
+
+

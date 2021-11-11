@@ -1,0 +1,67 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content-fluid %}
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Detalle de recurso</h1>
+    <p class="mb-4">Información consultada con el codigo de recurso (<strong> {{ recurso.codigo }} </strong>).</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-sm detail-background-recurso">
+                <div class="card-body">
+        
+                    <div class="text-white float-left" style="width:100%">
+                        <h3 class="detail-title-recurso"><strong> Recurso </strong></h3>
+                        <div class="float-right detail-recurso-codigo">
+                            <small class="mt-1">Codigo</small>
+                            <h1 class="mt-3 mb-0"> <strong> {{ recurso.codigo }}  </strong></h1>
+                        </div>
+                       
+
+                        <div class="detail-recurso">
+                            <h3 class="detail-titulo-descripcion">Descripción</h3>
+                            <label class="mt-2" for=""> <strong> Nombre </strong></label>
+                            <h5 class="ml-2"><strong> {{ recurso.nombre }} </strong></h5>
+    
+                            <label class="mt-2" for=""> <strong> Serial </strong></label>
+                            <h5 class="ml-2"><strong> {{ recurso.serial }} </strong></h5>
+    
+                            <label class="mt-2" for=""><strong> Marca </strong></label>
+                            <h5 class="ml-2"><strong> {{ recurso.marca.nombre }} </strong></h5>
+    
+                            <label class="mt-2" for=""><strong>Categoria</strong></label>
+                            <h5 class="ml-2"><strong> {{ recurso.categoria.nombre }} </strong></h5>
+                        </div>
+                        <div class="detail-container-asignado">
+                            <h5>Recurso Asignado</h5>
+                            <h3 class="detail-title-asignado"> <strong>Camilo Obando</strong></h3>
+                        </div>
+                       
+                    </div>
+       
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="my-2"></div>
+    <a href="{% url 'editar_recurso' pk=recurso.id %}" class="btn btn-primary btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-pencil-alt"></i>
+        </span>
+        <span class="text">Editar</span>
+    </a>
+    <a title="Desvincular persona de este articulo" href="{% url 'desvincular_asignacion' pk=recurso.id %}" class="btn btn-warning btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-arrow-circle-left"></i>
+        </span>
+        <span class="text">Desvincular Persona</span>
+    </a>
+{% endblock %}
+
+
+

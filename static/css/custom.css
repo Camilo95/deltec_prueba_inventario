@@ -1,0 +1,76 @@
+.custom-background-card{
+    background: url('../img/rainbow-vortex3.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.detail-recurso-codigo{
+    background: #1404446b; 
+    padding-left: 5px; 
+    padding-right: 5px; 
+    border-radius: 5px;
+
+}
+
+.detail-recurso-codigo small{
+    font-size: 12px;
+    position: absolute;
+}
+
+.detail-recurso-codigo #codigo{
+    position: relative;
+    top: 6px;
+}
+
+.detail-recurso{
+    margin-top: 110px;
+    background: #00000033;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.detail-titulo-descripcion{
+    position: absolute;
+    margin-top: -48px;
+    margin-left: -10px;
+    background: #3b61cc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-left: 2px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
+.detail-title-recurso{
+    position: absolute;
+    font-size: 40px;
+}
+
+.detail-persona-information{
+    width: 100%;
+    margin-left: 4%;
+}
+
+.detail-persona-profile{
+    width: 150px;
+    margin: auto;
+}
+
+.detail-container-asignado{
+    background: #4caf50;
+    margin-top: 9px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 7px;
+    border-radius: 5px;
+}
+
+.detail-title-asignado{
+    margin-left: 5px;
+}
+
+.detail-background-recurso{
+    background: #4a79ff;
+}

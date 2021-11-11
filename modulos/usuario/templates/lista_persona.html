@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content-fluid %}
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Personas</h1>
+    <p class="mb-4">Listado de personas que hacen parte de la empresa.</p>
+
+    
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="d-flex">
+                <div>
+                    <h6 class="m-0 mt-2 font-weight-bold text-primary">Listado</h6>
+                </div>
+                <div style="width: 100%;">
+                    <div class="float-right" >
+                        <a href="{% url 'crear_persona' %}" class=" btn btn-primary btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <span class="text">Crear Persona</span>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Identificacion</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Recursos Asignados</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Identificacion</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Recursos Asignados</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for p in personas %}
+                            <a></a>
+                            <tr>
+                                <td> <p> <strong>{{ p.identificacion }} </strong> </p> </td>
+                                <td>{{ p.nombres }}</td>
+                                <td>{{ p.apellidos }}</td>
+                                <td>
+                                    {{ p.recursos_asignados}}
+                                </td>
+                                <td>
+                                    <div class="card-body float-right p-0">
+                                        <a title="Ver información" href="{% url 'detalle_persona' id=p.identificacion %}" class="btn btn-info btn-circle btn-sm ">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+
+                                        <a title="Editar Persona" href="{% url 'editar_persona' pk=p.id %}" class="btn btn-warning btn-circle btn-sm ">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        {% if p.recursos_asignados > 0 %}
+                                        <a title="Listar recursos asignados" href="{% url 'lista_asignaciones' id=p.identificacion %}" class="btn btn-primary btn-circle btn-sm ">
+                                            <i class="fas fa-cubes"></i>
+                                        </a>
+                                        {% endif %}
+
+                                        <a title="Historial de recursos" href="{% url 'historial_asignaciones_persona' id=p.identificacion %}" class="btn btn-secondary btn-circle btn-sm ">
+                                            <i class="fas fa-history"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+

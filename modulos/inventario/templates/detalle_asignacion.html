@@ -1,0 +1,64 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content-fluid %}
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Detalle de asignación</h1>
+    <p class="mb-4">Historia de asignación con registro único (<strong> {{pk}} </strong>).</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-sm " style="background: #4a79ff;">
+                <div class="card-body">
+        
+                    <div class="text-white mt-3">
+                       
+                        
+                        <div class="text-white float-left" style="width:100%">
+                            <h3 class="detail-title-recurso"><strong> Detalle de asignación </strong></h3>
+                         
+                            
+
+                            <div class="detail-recurso">
+                                <h3 class="detail-titulo-descripcion">Descripción</h3>
+
+                                <label class="mt-2" for=""> <strong> Codigo </strong></label>
+                                <h5 class="ml-2"><strong> {{ asignado_object.recurso.codigo }} </strong></h5>
+
+                                <label class="mt-2" for=""> <strong> Nombre </strong></label>
+                                <h5 class="ml-2"><strong> {{ asignado_object.recurso.nombre }} </strong></h5>
+        
+                                <label class="mt-2" for=""> <strong> Serial </strong></label>
+                                <h5 class="ml-2"><strong> {{ asignado_object.recurso.serial }} </strong></h5>
+        
+                                <label class="mt-2" for=""><strong> Marca </strong></label>
+                                <h5 class="ml-2"><strong> {{ asignado_object.recurso.marca.nombre }} </strong></h5>
+        
+                                <label class="mt-2" for=""><strong>Categoria</strong></label>
+                                <h5 class="ml-2"><strong> {{ asignado_object.recurso.categoria.nombre }} </strong></h5>
+
+                                <label class="mt-2" for=""><strong>Fecha de asignación</strong></label>
+                                <h5 class="ml-2"><strong> {{ asignado_object.fecha_asignacion }} </strong></h5>
+
+                                <label class="mt-2" for=""><strong>Fecha de desvinculación</strong></label>
+                                <h5 class="ml-2"><strong> {{ asignado_object.fecha_desvinculacion }} </strong></h5>
+                            </div>
+                            <div class="detail-container-asignado">
+                                <h5>Persona anteriormente asociada</h5>
+                                <h3 class="detail-title-asignado"> <strong>{{ asignado_object.persona.nombre_completo }}</strong></h3>
+                            </div>
+                        
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+
+{% endblock %}

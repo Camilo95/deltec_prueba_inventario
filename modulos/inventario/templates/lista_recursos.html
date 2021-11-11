@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block content-fluid %}
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Recursos</h1>
+    <p class="mb-4">Listado de recursos que hacen parte de la empresa.</p>
+
+    
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="d-flex">
+                <div>
+                    <h6 class="m-0 mt-2 font-weight-bold text-primary">Listado</h6>
+                </div>
+                <div style="width: 100%;">
+                    <div class="float-right" >
+                        <a href="{% url 'crear_recurso' %}" class=" btn btn-primary btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <span class="text">Crear Recurso</span>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Serial</th>
+                            <th>Marca</th>
+                            <th>Categorias</th>
+                            <th>Asignado a</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Serial</th>
+                            <th>Marca</th>
+                            <th>Categorias</th>
+                            <th>Asignado a</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for r in recursos %}
+                            <tr>
+                                <td> <p> <strong>{{ r.codigo }} </strong> </p> </td>
+                                <td>{{ r.nombre }}</td>
+                                <td><strong>{{ r.serial }}</strong></td>
+                                <td>{{ r.marca.nombre }}</td>
+                                <td>{{ r.categoria.nombre }}</td>
+                                <td> <strong>{{ r.persona_asignada }}</strong></td>
+                                <td>
+                                    <div class="card-body float-right p-0">
+                                        <a title="Ver información" href="{% url 'detalle_recurso' codigo=r.codigo %}" class="btn btn-info btn-circle btn-sm ">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+
+                                        <a title="Editar Recurso" href="{% url 'editar_recurso' pk=r.id %}" class="btn btn-warning btn-circle btn-sm ">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+
+                                        {% if r.es_asignado  %}
+                                            
+                                            <a title="Desvincular Recurso" href="{% url 'desvincular_asignacion' pk=r.asignado_id %}?page=lista_recursos" class="btn btn-danger btn-circle btn-sm ">
+                                                <i class="fas fa-arrow-circle-left"></i>
+                                            </a>
+                                        
+                                        {% endif %}
+
+                                        {% if not r.es_asignado %}
+                                            <a title="Asignar Recurso" href="{% url 'crear_asignacion' codigo=r.codigo %}" class="btn btn-primary btn-circle btn-sm ">
+                                                <i class="fas fa-cube"></i>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

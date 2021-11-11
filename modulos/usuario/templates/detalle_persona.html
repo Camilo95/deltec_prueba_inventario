@@ -1,0 +1,43 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content-fluid %}
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Detalle de la persona</h1>
+    <p class="mb-4">Información personal consultada con el número de identificación (<strong> {{ persona.identificacion }} </strong>).</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card custom-background-card shadow-sm">
+                <div class="card-body">
+        
+                    <div class="d-flex">
+                        <div class="detail-persona-profile">
+                            <img class="img-profile rounded-circle"  style="border: 2px solid white;" src="{% static 'img/undraw_profile.svg' %}">
+                        </div>
+                        <div class="detail-persona-information">
+                            <div class="text-white float-left">
+                                <h1><strong> {{ persona.identificacion }} </strong></h1>
+                                <h3><strong> {{ persona.nombres }} {{persona.apellidos}} </strong></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="my-2"></div>
+    <a href="{% url 'editar_persona' pk=persona.id %}" class="btn btn-primary btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-pencil-alt"></i>
+        </span>
+        <span class="text">Editar</span>
+    </a>
+{% endblock %}
+
+
+
